@@ -37,6 +37,21 @@ img{max-width:100%;display:block;}
 .page-hero h1{font-family:Georgia,serif;font-size:38px;color:#FCB036;margin:0 0 10px;}
 .page-hero p{font-size:15px;color:#ccc;max-width:640px;margin:0 auto;line-height:1.7;}
 
+/* PHOTO HERO (competitors page) */
+.photo-hero{position:relative;min-height:520px;display:flex;align-items:center;background-size:cover;background-position:center 30%;margin-bottom:40px;}
+.photo-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg, rgba(13,3,0,0.90) 0%, rgba(13,3,0,0.60) 50%, rgba(13,3,0,0.25) 100%);}
+.photo-hero-content{position:relative;z-index:1;padding:0 60px;max-width:600px;}
+.photo-hero .pill{display:inline-block;background:#D42C00;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:18px;}
+.photo-hero h1{font-family:Georgia,serif;font-size:44px;color:#fff;line-height:1.15;margin:0 0 16px;}
+.photo-hero p{font-size:15px;color:#eee;line-height:1.7;margin:0 0 28px;}
+
+/* SPLIT PHOTO SECTIONS (competitors page) */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.split-img{border-radius:14px;overflow:hidden;height:420px;}
+.split-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.split-rev .split-img{order:2;}
+.split-rev .split-text{order:1;}
+
 /* HOME HERO */
 .hero{background:#2B5078;padding:72px 60px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
 .hero-pill{display:inline-block;background:#D42C00;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:18px;}
@@ -187,6 +202,11 @@ img{max-width:100%;display:block;}
   .footer{grid-template-columns:1fr 1fr;}
   .contact-grid{grid-template-columns:1fr;}
   .nav-links{order:3;width:100%;justify-content:center;}
+  .photo-hero{flex-direction:column;align-items:flex-start;min-height:0;padding:40px 24px 32px;}
+  .photo-hero-content{padding:0;max-width:none;}
+  .split{grid-template-columns:1fr;}
+  .split-rev .split-img{order:1;}
+  .split-rev .split-text{order:2;}
 }
 </style>
 </head>
@@ -214,10 +234,15 @@ img{max-width:100%;display:block;}
     </div>
   </nav>
 
-  <section class="page-hero">
-    <div class="pill">The Senior Cup</div>
-    <h1>Meet the Competing Communities</h1>
-    <p>Senior living communities from across Central Florida go head-to-head in an original, honey-inspired dish for Seniors First's Sweet 60 celebration. Guests taste every creation and vote live for their favorite.</p>
+  <section class="photo-hero" style="background-image:url('images/competitors/hero.jpg');">
+    <div class="photo-hero-content">
+      <div class="pill">The Senior Cup</div>
+      <h1>Twelve communities. One unforgettable competition.</h1>
+      <p>Senior living communities from across Central Florida go head-to-head in an original, honey-inspired dish for Seniors First's Sweet 60 celebration. Guests taste every creation and vote live for their favorite.</p>
+      <div class="hero-btns">
+        <a class="btn-red" href="chefs.html">Meet the Chefs</a>
+      </div>
+    </div>
   </section>
 
   <section class="section">
@@ -241,6 +266,18 @@ img{max-width:100%;display:block;}
   </section>
 
   <section class="section cream-bg">
+    <div class="split split-rev">
+      <div class="split-img"><img src="images/competitors/story.jpg" alt="A competing chef at Senior Chef Showdown"></div>
+      <div class="split-text">
+        <div class="section-label">The Chefs</div>
+        <h2>Behind every dish is a story</h2>
+        <p class="body-text">Get to know the chefs, their inspirations, and the heart behind their dishes &mdash; from long-time competitors to first-timers stepping up for the Senior Cup.</p>
+        <a class="btn-red" href="chefs.html">View Chef Profiles</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="section-label">Get Involved</div>
     <h2>Represent your community</h2>
     <p class="body-text">Senior living communities are invited to enter a chef team and compete for the Senior Cup at Senior Chef Showdown 2027. Each competing community receives a $400 credit toward table purchase, plus recognition across all event materials.</p>
