@@ -37,6 +37,27 @@ img{max-width:100%;display:block;}
 .page-hero h1{font-family:Georgia,serif;font-size:38px;color:#FCB036;margin:0 0 10px;}
 .page-hero p{font-size:15px;color:#ccc;max-width:640px;margin:0 auto;line-height:1.7;}
 
+/* PHOTO HERO (sponsors page) */
+.photo-hero{position:relative;min-height:520px;display:flex;align-items:center;background-size:cover;background-position:center 30%;margin-bottom:40px;}
+.photo-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg, rgba(13,3,0,0.90) 0%, rgba(13,3,0,0.60) 50%, rgba(13,3,0,0.25) 100%);}
+.photo-hero-content{position:relative;z-index:1;padding:0 60px;max-width:600px;}
+.photo-hero .pill{display:inline-block;background:#D42C00;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:18px;}
+.photo-hero h1{font-family:Georgia,serif;font-size:44px;color:#fff;line-height:1.15;margin:0 0 16px;}
+.photo-hero p{font-size:15px;color:#eee;line-height:1.7;margin:0 0 28px;}
+
+/* SPLIT PHOTO SECTIONS (sponsors page) */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.split-img{border-radius:14px;overflow:hidden;height:420px;}
+.split-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.split-rev .split-img{order:2;}
+.split-rev .split-text{order:1;}
+
+/* CTA PHOTO (sponsors page) */
+.cta-photo{position:relative;min-height:320px;display:flex;align-items:center;background-size:cover;background-position:center;}
+.cta-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg, rgba(13,3,0,0.88) 0%, rgba(13,3,0,0.55) 55%, rgba(13,3,0,0.15) 100%);}
+.cta-photo-content{position:relative;z-index:1;padding:56px 60px;max-width:520px;}
+.cta-photo h2{font-family:Georgia,serif;font-size:32px;color:#fff;margin:0 0 20px;line-height:1.2;}
+
 /* HOME HERO */
 .hero{background:#2B5078;padding:72px 60px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
 .hero-pill{display:inline-block;background:#D42C00;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:18px;}
@@ -191,6 +212,12 @@ img{max-width:100%;display:block;}
   .footer{grid-template-columns:1fr 1fr;}
   .contact-grid{grid-template-columns:1fr;}
   .nav-links{order:3;width:100%;justify-content:center;}
+  .photo-hero{flex-direction:column;align-items:flex-start;min-height:0;padding:40px 24px 32px;}
+  .photo-hero-content{padding:0;max-width:none;}
+  .split{grid-template-columns:1fr;}
+  .split-rev .split-img{order:1;}
+  .split-rev .split-text{order:2;}
+  .cta-photo-content{padding:40px 24px;max-width:none;}
 }
 </style>
 </head>
@@ -218,11 +245,16 @@ img{max-width:100%;display:block;}
     </div>
   </nav>
 
-  <section class="page-hero">
-    <div class="pill">Partner With Us</div>
-    <div style="color:#FCB036;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:bold;margin-bottom:10px;">Presented by Village on the Green</div>
-    <h1>Sponsor Senior Chef Showdown 2026</h1>
-    <p>Reach 250+ senior care professionals, families, and community leaders while directly funding Meals on Wheels and in-home care for Central Florida seniors through Seniors First.</p>
+  <section class="photo-hero" style="background-image:url('images/sponsors/hero.jpg');">
+    <div class="photo-hero-content">
+      <div class="pill">Partner With Us</div>
+      <h1>Sponsor Senior Chef Showdown 2026</h1>
+      <p>Reach 250+ senior care professionals, families, and community leaders while directly funding Meals on Wheels and in-home care for Central Florida seniors through Seniors First.</p>
+      <div class="hero-btns">
+        <a class="btn-red" href="mailto:beauh@assistedlivinglocators.com">Become a Sponsor</a>
+        <a class="btn-outline" href="sponsor-directory.html">View Sponsor Directory</a>
+      </div>
+    </div>
   </section>
 
   <section class="section cream-bg">
@@ -279,6 +311,25 @@ img{max-width:100%;display:block;}
       <a class="btn-gold" href="mailto:beauh@assistedlivinglocators.com">Become a Sponsor</a>
       &nbsp;
       <a class="btn-gold" style="background:transparent;border:1px solid #2B5078;color:#2B5078;" href="sponsor-directory.html">View Sponsor Directory</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="split">
+      <div class="split-text">
+        <div class="section-label">Our Partnership</div>
+        <h2>More than logo placement</h2>
+        <p class="body-text">Your partnership helps create an unforgettable experience that honors senior living communities and raises critical funds for Seniors First.</p>
+        <p class="body-text">We work closely with each sponsor to highlight your brand, share your story, and build lasting relationships within our mission-driven network.</p>
+      </div>
+      <div class="split-img"><img src="images/sponsors/story.jpg" alt="A sponsor representative at Senior Chef Showdown"></div>
+    </div>
+  </section>
+
+  <section class="cta-photo" style="background-image:url('images/sponsors/cta.jpg');">
+    <div class="cta-photo-content">
+      <h2>Choose your place at the table.</h2>
+      <a class="btn-white" href="mailto:beauh@assistedlivinglocators.com">Become a Sponsor</a>
     </div>
   </section>
 
