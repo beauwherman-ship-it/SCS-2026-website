@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stories - Senior Chef Showdown 2026</title>
-<meta name="description" content="Senior Chef Showdown 2026 Presented by Village on the Green -- benefiting Seniors First's 60th anniversary. October 7, 2026, UCF FAIRWINDS Alumni Center.">
+<title>2024 Photo Gallery - Senior Chef Showdown</title>
+<meta name="description" content="Photos from the 2024 Senior Chef Showdown -- chefs, dishes, guests, and the Chef's Cup award, benefiting Central Florida seniors.">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -184,12 +184,39 @@ img{max-width:100%;display:block;}
 .social-btn.yt{background:#FF0000;}
 .follow-label{color:#ccc;font-size:12px;font-weight:bold;}
 
+/* PHOTO GALLERY */
+.gallery-count{font-size:13px;color:#888;text-align:center;margin:-8px 0 28px;}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.gallery-item{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:#f5f0e8;border:none;padding:0;display:block;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.25s;}
+.gallery-item:hover img{transform:scale(1.06);}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35) 100%);opacity:0;transition:opacity 0.2s;}
+.gallery-item:hover::after{opacity:1;}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(10,3,0,0.92);z-index:1000;display:none;align-items:center;justify-content:center;padding:40px;}
+.lightbox.open{display:flex;}
+.lightbox-frame{position:relative;max-width:100%;max-height:100%;}
+.lightbox img{max-width:100%;max-height:80vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5);display:block;margin:0 auto;}
+.lightbox-caption{text-align:center;color:#eee;font-size:14px;margin-top:14px;padding:0 60px;}
+.lightbox-close{position:fixed;top:20px;right:28px;color:#fff;font-size:32px;cursor:pointer;line-height:1;background:none;border:none;z-index:1001;}
+.lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:28px;width:52px;height:52px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1001;}
+.lightbox-nav:hover{background:rgba(255,255,255,0.25);}
+.lightbox-prev{left:20px;}
+.lightbox-next{right:20px;}
+
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;}
   .event-grid, .comm-grid, .card-grid{grid-template-columns:repeat(2,1fr);}
+  .gallery-grid{grid-template-columns:repeat(3,1fr);}
   .footer{grid-template-columns:1fr 1fr;}
   .contact-grid{grid-template-columns:1fr;}
   .nav-links{order:3;width:100%;justify-content:center;}
+}
+@media(max-width:600px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .lightbox-nav{width:40px;height:40px;font-size:20px;}
+  .lightbox{padding:16px;}
 }
 </style>
 </head>
@@ -218,44 +245,108 @@ img{max-width:100%;display:block;}
   </nav>
 
   <section class="page-hero">
-    <div class="pill">Chef Storytelling</div>
-    <h1>Stories</h1>
-    <p>The people, communities, and moments behind Senior Chef Showdown &mdash; told through chef spotlights, community features, and event recaps.</p>
+    <div class="pill">Photo Gallery</div>
+    <h1>2024 Event Gallery</h1>
+    <p>Chefs, dishes, guests, and the winning moments from Senior Chef Showdown 2024 &mdash; the year Legacy Pointe at UCF took home the Chef's Cup.</p>
   </section>
 
   <section class="section">
-    <div class="card-grid">
-      <div class="plain-card"><span class="tag">Coming Soon</span><h3>Community Spotlight Series</h3><p>A rotating feature introducing each competing community's culinary team and the story behind their honey-inspired dish, running through the fall.</p></div>
-      <div class="plain-card"><span class="tag">Coming Soon</span><h3>Why Honey?</h3><p>The story behind this year's common ingredient and how it connects to Seniors First's Sweet 60 celebration.</p></div>
-      <a href="gallery-2025.html" class="plain-card" style="text-decoration:none;color:inherit;display:block;"><span class="tag">Photo Gallery</span><h3>2025 Event Recap</h3><p>Highlights from last year's Senior Chef Showdown &mdash; the dishes, the winners, and the $35,000 raised for Seniors First.</p></a>
-      <a href="gallery-2024.html" class="plain-card" style="text-decoration:none;color:inherit;display:block;"><span class="tag">Photo Gallery</span><h3>2024 Event Recap</h3><p>Photos from our second year &mdash; the dishes, the crowd, and Legacy Pointe at UCF's Chef's Cup win.</p></a>
+    <div class="gallery-count">47 photos &mdash; click any photo to enlarge</div>
+    <div class="gallery-grid">
+      <button class="gallery-item" onclick="openLightbox(0)"><img src="images/gallery/2024/thumb/2024-01.jpg" alt="Two chefs preparing dishes at a fall-harvest themed cooking station" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(1)"><img src="images/gallery/2024/thumb/2024-02.jpg" alt="Executive chef chatting with guests while serving a sample" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(2)"><img src="images/gallery/2024/thumb/2024-03.jpg" alt="Chef with tattoos serving a smiling guest a plated bite" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(3)"><img src="images/gallery/2024/thumb/2024-04.jpg" alt="Chef offering a taste to a delighted senior guest" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(4)"><img src="images/gallery/2024/thumb/2024-05.jpg" alt="Corn-themed cooking team cheering after finishing their dish" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(5)"><img src="images/gallery/2024/thumb/2024-06.jpg" alt="Chefs at the Ambiance booth laughing and singing with guests" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(6)"><img src="images/gallery/2024/thumb/2024-07.jpg" alt="Cooking duo posing together in playful corn-husk costumes" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(7)"><img src="images/gallery/2024/thumb/2024-08.jpg" alt="Chef receiving the trophy from a teammate in the kitchen" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(8)"><img src="images/gallery/2024/thumb/2024-09.jpg" alt="Fresh corn salsa served in a rustic bucket display" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(9)"><img src="images/gallery/2024/thumb/2024-10.jpg" alt="Crab cake bites arranged on a serving tray" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(10)"><img src="images/gallery/2024/thumb/2024-11.jpg" alt="Salmon bite topped with bright corn salsa" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(11)"><img src="images/gallery/2024/thumb/2024-12.jpg" alt="Scallop bites elegantly plated for tasting" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(12)"><img src="images/gallery/2024/thumb/2024-13.jpg" alt="Taco display rack ready for guests to sample" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(13)"><img src="images/gallery/2024/thumb/2024-14.jpg" alt="Dessert plate with cake and a scoop of ice cream" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(14)"><img src="images/gallery/2024/thumb/2024-15.jpg" alt="Shrimp cocktail served in a hollowed pineapple" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(15)"><img src="images/gallery/2024/thumb/2024-16.jpg" alt="Close-up tray of seared scallop appetizers" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(16)"><img src="images/gallery/2024/thumb/2024-17.jpg" alt="Veteran guest chatting warmly with a tablemate" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(17)"><img src="images/gallery/2024/thumb/2024-18.jpg" alt="Guests mingling near the Strive Senior Living booth" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(18)"><img src="images/gallery/2024/thumb/2024-19.jpg" alt="Toddler and mom sharing a sweet moment at the event" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(19)"><img src="images/gallery/2024/thumb/2024-20.jpg" alt="Three women laughing together at the reception" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(20)"><img src="images/gallery/2024/thumb/2024-21.jpg" alt="Guest sharing a warm exchange with a volunteer" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(21)"><img src="images/gallery/2024/thumb/2024-22.jpg" alt="Vietnam veteran chatting with a friend amid the crowd" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(22)"><img src="images/gallery/2024/thumb/2024-23.jpg" alt="CEO Robert &quot;Kim&quot; Lee chatting with a guest" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(23)"><img src="images/gallery/2024/thumb/2024-24.jpg" alt="Guests admiring a Day of the Dead themed booth" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(24)"><img src="images/gallery/2024/thumb/2024-25.jpg" alt="Guest checking her phone at a Halloween-themed table" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(25)"><img src="images/gallery/2024/thumb/2024-26.jpg" alt="Friends taking a smiling selfie at a costume-themed table" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(26)"><img src="images/gallery/2024/thumb/2024-27.jpg" alt="Emcee in a gold sequin jacket announcing awards" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(27)"><img src="images/gallery/2024/thumb/2024-28.jpg" alt="Emcee gesturing animatedly at the podium with trophies displayed" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(28)"><img src="images/gallery/2024/thumb/2024-29.jpg" alt="Emcee raising his arms triumphantly during the awards segment" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(29)"><img src="images/gallery/2024/thumb/2024-30.jpg" alt="Speaker addressing the room beside the championship trophy" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(30)"><img src="images/gallery/2024/thumb/2024-31.jpg" alt="Two women proudly holding the &quot;Best Table Decorations&quot; award" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(31)"><img src="images/gallery/2024/thumb/2024-32.jpg" alt="Chef Kevin Rasberry accepting the Judges&#39; Award on stage" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(32)"><img src="images/gallery/2024/thumb/2024-33.jpg" alt="Speaker announcing the evening&#39;s total funds raised" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(33)"><img src="images/gallery/2024/thumb/2024-34.jpg" alt="Legacy Pointe executive chef accepting the Champion trophy" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(34)"><img src="images/gallery/2024/thumb/2024-35.jpg" alt="Full winning team posing together with the Championship trophy" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(35)"><img src="images/gallery/2024/thumb/2024-36.jpg" alt="Fall-themed corn and sweet tea display table" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(36)"><img src="images/gallery/2024/thumb/2024-37.jpg" alt="El Salvador themed dessert table strung with lights" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(37)"><img src="images/gallery/2024/thumb/2024-38.jpg" alt="Whimsical Halloween witch-themed table setting" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(38)"><img src="images/gallery/2024/thumb/2024-39.jpg" alt="&quot;What Is This?&quot; corn-menu sign at the festive booth" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(39)"><img src="images/gallery/2024/thumb/2024-40.jpg" alt="Fall table setting with pumpkins and dried wheat" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(40)"><img src="images/gallery/2024/thumb/2024-41.jpg" alt="Elegantly decorated sponsor table display" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(41)"><img src="images/gallery/2024/thumb/2024-42.jpg" alt="Corn-stalk mural backdrop with harvest decor" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(42)"><img src="images/gallery/2024/thumb/2024-43.jpg" alt="Seniors seated together at a festively decorated fiesta table" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(43)"><img src="images/gallery/2024/thumb/2024-44.jpg" alt="Four women posing together, all smiling for the camera" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(44)"><img src="images/gallery/2024/thumb/2024-45.jpg" alt="Legacy Pointe team group photo before the competition" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(45)"><img src="images/gallery/2024/thumb/2024-46.jpg" alt="Group of colleagues posing together at the reception" loading="lazy"></button>
+      <button class="gallery-item" onclick="openLightbox(46)"><img src="images/gallery/2024/thumb/2024-47.jpg" alt="Winning team celebrating together around their trophy" loading="lazy"></button>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a class="btn-red" href="gallery-2025.html">View the 2025 Gallery &rarr;</a>
     </div>
   </section>
 
-  <section class="section cream-bg">
-    <div class="section-label">Chef &amp; Community Videos</div>
-    <h2>Watch the stories</h2>
-    <div class="card-grid">
-      <a target="_blank" rel="noopener" href="https://youtu.be/D905DSKGMTs" class="plain-card" style="text-decoration:none;color:inherit;display:block;"><span class="tag">Video</span><h3>&#9654; Senior Chef Showdown Highlights</h3><p>Watch chefs, communities, and guests bring last year's competition to life.</p></a>
-      <a target="_blank" rel="noopener" href="https://mynews13.com/fl/orlando/news/2025/09/24/senior-chef-showdown-2025-seniors-first-mayflower-the-grove-at-trelago" class="plain-card" style="text-decoration:none;color:inherit;display:block;"><span class="tag">Video</span><h3>&#9654; Seniors First, Mayflower &amp; The Grove at Trelago</h3><p>My News 13 features the communities and the beneficiary behind Senior Chef Showdown 2025.</p></a>
-      <a target="_blank" rel="noopener" href="https://www.youtube.com/@SeniorChefShowdown" class="plain-card" style="text-decoration:none;color:inherit;display:block;"><span class="tag">YouTube</span><h3>&#9654; Subscribe for More</h3><p>Chef interviews, community features, and event recaps on our YouTube channel, @SeniorChefShowdown.</p></a>
+  <div id="lightbox" class="lightbox" onclick="if(event.target.id==='lightbox')closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)" aria-label="Previous photo">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)" aria-label="Next photo">&#8250;</button>
+    <div class="lightbox-frame">
+      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
-  </section>
+  </div>
 
-  <section class="section">
-    <div class="section-label">In the News</div>
-    <h2>Media coverage</h2>
-    <div class="card-grid">
-      <a target="_blank" rel="noopener" href="https://www.fox35orlando.com/video/1720903" class="plain-card" style="text-decoration:none;color:inherit;display:block;"><span class="tag">Fox 35 Orlando</span><h3>Fox 35 Orlando Covers Senior Chef Showdown</h3><p>Local news coverage spotlighting the culinary competition and its impact on Central Florida seniors.</p></a>
-      <a target="_blank" rel="noopener" href="https://mynews13.com/fl/orlando/news/2025/09/24/senior-chef-showdown-2025-seniors-first-mayflower-the-grove-at-trelago" class="plain-card" style="text-decoration:none;color:inherit;display:block;"><span class="tag">My News 13</span><h3>My News 13: Seniors First, Mayflower &amp; The Grove at Trelago</h3><p>A closer look at the 2025 event, the beneficiary, and two of our competing communities.</p></a>
-    </div>
-  </section>
-
-  <section class="section cream-bg">
-    <div class="section-label">Stay Updated</div>
-    <h2>Follow along</h2>
-    <p class="body-text">New chef spotlights and community stories are shared regularly on our social channels in the lead-up to October 7. Check back here for the full collection.</p>
-  </section>
+  <script>
+    const galleryPhotos = [{slug:"2024-01.jpg",caption:"Two chefs preparing dishes at a fall-harvest themed cooking station"},{slug:"2024-02.jpg",caption:"Executive chef chatting with guests while serving a sample"},{slug:"2024-03.jpg",caption:"Chef with tattoos serving a smiling guest a plated bite"},{slug:"2024-04.jpg",caption:"Chef offering a taste to a delighted senior guest"},{slug:"2024-05.jpg",caption:"Corn-themed cooking team cheering after finishing their dish"},{slug:"2024-06.jpg",caption:"Chefs at the Ambiance booth laughing and singing with guests"},{slug:"2024-07.jpg",caption:"Cooking duo posing together in playful corn-husk costumes"},{slug:"2024-08.jpg",caption:"Chef receiving the trophy from a teammate in the kitchen"},{slug:"2024-09.jpg",caption:"Fresh corn salsa served in a rustic bucket display"},{slug:"2024-10.jpg",caption:"Crab cake bites arranged on a serving tray"},{slug:"2024-11.jpg",caption:"Salmon bite topped with bright corn salsa"},{slug:"2024-12.jpg",caption:"Scallop bites elegantly plated for tasting"},{slug:"2024-13.jpg",caption:"Taco display rack ready for guests to sample"},{slug:"2024-14.jpg",caption:"Dessert plate with cake and a scoop of ice cream"},{slug:"2024-15.jpg",caption:"Shrimp cocktail served in a hollowed pineapple"},{slug:"2024-16.jpg",caption:"Close-up tray of seared scallop appetizers"},{slug:"2024-17.jpg",caption:"Veteran guest chatting warmly with a tablemate"},{slug:"2024-18.jpg",caption:"Guests mingling near the Strive Senior Living booth"},{slug:"2024-19.jpg",caption:"Toddler and mom sharing a sweet moment at the event"},{slug:"2024-20.jpg",caption:"Three women laughing together at the reception"},{slug:"2024-21.jpg",caption:"Guest sharing a warm exchange with a volunteer"},{slug:"2024-22.jpg",caption:"Vietnam veteran chatting with a friend amid the crowd"},{slug:"2024-23.jpg",caption:"CEO Robert &quot;Kim&quot; Lee chatting with a guest"},{slug:"2024-24.jpg",caption:"Guests admiring a Day of the Dead themed booth"},{slug:"2024-25.jpg",caption:"Guest checking her phone at a Halloween-themed table"},{slug:"2024-26.jpg",caption:"Friends taking a smiling selfie at a costume-themed table"},{slug:"2024-27.jpg",caption:"Emcee in a gold sequin jacket announcing awards"},{slug:"2024-28.jpg",caption:"Emcee gesturing animatedly at the podium with trophies displayed"},{slug:"2024-29.jpg",caption:"Emcee raising his arms triumphantly during the awards segment"},{slug:"2024-30.jpg",caption:"Speaker addressing the room beside the championship trophy"},{slug:"2024-31.jpg",caption:"Two women proudly holding the &quot;Best Table Decorations&quot; award"},{slug:"2024-32.jpg",caption:"Chef Kevin Rasberry accepting the Judges&#39; Award on stage"},{slug:"2024-33.jpg",caption:"Speaker announcing the evening&#39;s total funds raised"},{slug:"2024-34.jpg",caption:"Legacy Pointe executive chef accepting the Champion trophy"},{slug:"2024-35.jpg",caption:"Full winning team posing together with the Championship trophy"},{slug:"2024-36.jpg",caption:"Fall-themed corn and sweet tea display table"},{slug:"2024-37.jpg",caption:"El Salvador themed dessert table strung with lights"},{slug:"2024-38.jpg",caption:"Whimsical Halloween witch-themed table setting"},{slug:"2024-39.jpg",caption:"&quot;What Is This?&quot; corn-menu sign at the festive booth"},{slug:"2024-40.jpg",caption:"Fall table setting with pumpkins and dried wheat"},{slug:"2024-41.jpg",caption:"Elegantly decorated sponsor table display"},{slug:"2024-42.jpg",caption:"Corn-stalk mural backdrop with harvest decor"},{slug:"2024-43.jpg",caption:"Seniors seated together at a festively decorated fiesta table"},{slug:"2024-44.jpg",caption:"Four women posing together, all smiling for the camera"},{slug:"2024-45.jpg",caption:"Legacy Pointe team group photo before the competition"},{slug:"2024-46.jpg",caption:"Group of colleagues posing together at the reception"},{slug:"2024-47.jpg",caption:"Winning team celebrating together around their trophy"}];
+    let currentIndex = 0;
+    function openLightbox(i) {
+      currentIndex = i;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function navLightbox(dir) {
+      currentIndex = (currentIndex + dir + galleryPhotos.length) % galleryPhotos.length;
+      updateLightbox();
+    }
+    function updateLightbox() {
+      const p = galleryPhotos[currentIndex];
+      document.getElementById('lightbox-img').src = 'images/gallery/2024/full/' + p.slug;
+      document.getElementById('lightbox-img').alt = p.caption;
+      document.getElementById('lightbox-caption').textContent = p.caption;
+    }
+    document.addEventListener('keydown', (e) => {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(1);
+    });
+  </script>
 
   <footer class="footer">
     <div class="footer-brand">
