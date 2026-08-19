@@ -8,6 +8,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -220,6 +222,19 @@ img{max-width:100%;display:block;}
 .social-btn.yt{background:#FF0000;}
 .follow-label{color:#ccc;font-size:12px;font-weight:bold;}
 
+/* FIND US MAP */
+.map-panel{display:grid;grid-template-columns:1.4fr 1fr;background:#fff;border:1px solid #e8e0d0;border-radius:12px;overflow:hidden;}
+#event-map{width:100%;height:420px;background:#f5f0e8;}
+.map-info{padding:32px;display:flex;flex-direction:column;gap:20px;border-left:1px solid #e8e0d0;}
+.map-info h3{font-family:Georgia,serif;font-size:19px;color:#2B5078;margin:0;}
+.map-field{display:flex;flex-direction:column;gap:4px;}
+.map-field-label{font-size:10px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:#D42C00;}
+.map-field-value{font-size:14px;line-height:1.6;color:#444;}
+.map-actions{display:flex;flex-direction:column;gap:10px;margin-top:auto;}
+.map-actions a{text-align:center;}
+.leaflet-popup-content{font-size:13px;line-height:1.5;color:#2B5078;}
+.leaflet-popup-content strong{display:block;margin-bottom:2px;color:#2B5078;}
+
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;}
   .event-grid, .comm-grid, .card-grid, .board-grid{grid-template-columns:repeat(2,1fr);}
@@ -234,6 +249,9 @@ img{max-width:100%;display:block;}
   .split-rev .split-img{order:1;}
   .split-rev .split-text{order:2;}
   .cta-photo-content{padding:40px 24px;max-width:none;}
+  .map-panel{grid-template-columns:1fr;}
+  .map-info{border-left:none;border-top:1px solid #e8e0d0;}
+  #event-map{height:320px;}
 }
 @media(max-width:600px){
   .board-grid{grid-template-columns:1fr;}
@@ -365,6 +383,50 @@ img{max-width:100%;display:block;}
       </div>
     </div>
   </section>
+
+  <section class="section" id="find-us">
+    <div class="section-label">Getting There</div>
+    <h2>Find the Alumni Center</h2>
+    <div class="map-panel">
+      <div id="event-map"></div>
+      <div class="map-info">
+        <h3>UCF FAIRWINDS Alumni Center</h3>
+        <div class="map-field">
+          <div class="map-field-label">Address</div>
+          <div class="map-field-value">12676 Gemini Blvd N<br>Orlando, FL 32816</div>
+        </div>
+        <div class="map-field">
+          <div class="map-field-label">On Campus</div>
+          <div class="map-field-value">University of Central Florida, main campus</div>
+        </div>
+        <div class="map-actions">
+          <a class="btn-red" href="https://www.google.com/maps/dir/?api=1&destination=28.6060559,-81.1988164" target="_blank" rel="noopener">Get Directions</a>
+          <a class="btn-outline" style="color:#D42C00;border-color:#D42C00;" href="https://www.google.com/maps/place/UCF+FAIRWINDS+Alumni+Center/@28.6060559,-81.1988164,17z" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      var lat = 28.6060559, lng = -81.1988164;
+      var map = L.map('event-map', { scrollWheelZoom: false }).setView([lat, lng], 16);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+      }).addTo(map);
+      var icon = L.divIcon({
+        html: '<div style="width:16px;height:16px;border-radius:50%;background:#D42C00;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.4);"></div>',
+        className: '',
+        iconSize: [16, 16],
+        iconAnchor: [8, 8]
+      });
+      L.marker([lat, lng], { icon: icon }).addTo(map)
+        .bindPopup('<strong>UCF FAIRWINDS Alumni Center</strong>12676 Gemini Blvd N, Orlando, FL 32816')
+        .openPopup();
+      window.addEventListener('resize', function() { map.invalidateSize(); });
+    })();
+  </script>
 
   <section class="cta-photo" id="tickets" style="background-image:url('images/event/cta.jpg');background-position:center 10%;">
     <div class="cta-photo-content">
