@@ -110,6 +110,7 @@ img{max-width:100%;display:block;}
 .dc-num{font-family:Georgia,serif;font-size:18px;color:#FCB036;font-weight:bold;line-height:1.3;}
 .dc-sub{font-size:11px;color:#ccc;line-height:1.5;}
 .photo-hero-logo{position:absolute;top:50%;right:50px;transform:translateY(-50%);background:#fff;border-radius:50%;width:150px;height:150px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.35);z-index:2;}
+.sold-out-banner{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%) rotate(-8deg);background:var(--red);color:#fff;font-weight:800;font-size:2.4rem;letter-spacing:5px;padding:14px 50px;box-shadow:0 8px 24px rgba(0,0,0,0.35);border:3px solid #fff;white-space:nowrap;z-index:3;pointer-events:none;}
 .photo-hero-logo img{width:100%;height:100%;object-fit:contain;}
 
 /* SPLIT PHOTO SECTIONS (event page) */
@@ -297,6 +298,7 @@ img{max-width:100%;display:block;}
   .footer{grid-template-columns:1fr 1fr;}
   .contact-grid{grid-template-columns:1fr;}
   .nav-links{order:3;width:100%;justify-content:center;}
+  .sold-out-banner{font-size:1.3rem;padding:10px 28px;letter-spacing:3px;}
   .photo-hero{flex-direction:column;align-items:flex-start;min-height:0;padding:40px 24px 32px;}
   .photo-hero-content{padding:0;max-width:none;}
   .photo-hero-datecard{position:static;margin-top:24px;}
@@ -339,12 +341,12 @@ img{max-width:100%;display:block;}
   </nav>
 
   <section class="photo-hero" style="background-image:url('images/event/hero.jpg');">
+    <div class="sold-out-banner">SOLD OUT</div>
     <div class="photo-hero-content">
       <div class="pill">Event Details</div>
       <h1>An evening with purpose on every plate.</h1>
       <p>Presented by Village on the Green &mdash; Wednesday, October 7, 2026, 6:00&ndash;8:00 PM at UCF FAIRWINDS Alumni Center, Orlando, FL.</p>
       <div class="hero-btns">
-        <a target="_blank" rel="noopener" class="btn-red" href="https://givebutter.com/c/senior-chef-showdown-2026">Get Tickets</a>
         <a class="btn-outline" href="#program">View Schedule</a>
       </div>
     </div>
@@ -385,8 +387,8 @@ img{max-width:100%;display:block;}
     <div class="section-label">Program</div>
     <h2>Evening schedule</h2>
     <div class="timeline">
-      <div class="tl-item"><div class="tl-time">2:00 &ndash; 4:00 PM</div><div><div class="tl-title">Chef Load-In &amp; Setup</div><div class="tl-desc">Competing culinary teams arrive and set up their stations.</div></div></div>
-      <div class="tl-item"><div class="tl-time">4:00 &ndash; 5:30 PM</div><div><div class="tl-title">Table Decorating &amp; Sponsor Setup</div><div class="tl-desc">The community table decorating competition and sponsor activations come together.</div></div></div>
+      <div class="tl-item"><div class="tl-time">2:30 &ndash; 4:30 PM</div><div><div class="tl-title">Chef Load-In &amp; Setup</div><div class="tl-desc">Competing culinary teams arrive and set up their stations.</div></div></div>
+      <div class="tl-item"><div class="tl-time">3:00 &ndash; 5:30 PM</div><div><div class="tl-title">Table Decorating &amp; Sponsor Setup</div><div class="tl-desc">The community table decorating competition and sponsor activations come together.</div></div></div>
       <div class="tl-item"><div class="tl-time">5:30 &ndash; 6:00 PM</div><div><div class="tl-title">Final Prep</div><div class="tl-desc">Last touches before doors open to guests.</div></div></div>
       <div class="tl-item"><div class="tl-time">6:00 &ndash; 7:30 PM</div><div><div class="tl-title">Guest Arrival, Tasting &amp; Voting</div><div class="tl-desc">Guests taste every dish, cast their vote, browse the silent auction, and enjoy sponsor activations.</div></div></div>
       <div class="tl-item"><div class="tl-time">7:30 &ndash; 8:00 PM</div><div><div class="tl-title">Program, Chef Storytelling &amp; Awards</div><div class="tl-desc">A judging panel and live vote determine the Senior Cup winner, with chef storytelling throughout.</div></div></div>
@@ -485,10 +487,11 @@ img{max-width:100%;display:block;}
   </script>
 
   <section class="cta-photo" id="tickets" style="background-image:url('images/event/cta.jpg');background-position:center 10%;">
+    <div class="sold-out-banner">SOLD OUT</div>
     <div class="cta-photo-content">
       <h2>Join us October 7</h2>
       <p style="color:#eee;font-size:15px;margin:0 0 24px;line-height:1.7;">Tables go on sale August 1 at $1,000/table. Individual tickets go on sale September 1 at $125/ticket.</p>
-      <a target="_blank" rel="noopener" class="btn-white" href="https://givebutter.com/c/senior-chef-showdown-2026">Get Tickets</a>
+      <a class="btn-white" href="javascript:void(0)" aria-disabled="true" tabindex="-1" style="opacity:.5;pointer-events:none;cursor:not-allowed;">Get Tickets</a>
     </div>
   </section>
 
