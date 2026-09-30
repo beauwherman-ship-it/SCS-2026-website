@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "static",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "serve", "-l", "5177", "."],
-      "port": 5177
+      "name": "static-preview",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8743"],
+      "port": 8743
     }
   ]
 }
